@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="xT: Nested Tokenization for Larger Context in Large Images">
+  <meta name="keywords" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>xT</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+  <script async src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">\(x\)T</h1>
+            <h2 class="title is-2 publication-title">Nested Tokenization for Larger Context in Large Images</h2>
+            <div class="is-size-5 publication-authors">
+              <a href="https://ritwikgupta.me">Ritwik Gupta*</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="https://homepage.jackli.org/">Shufan Li*</a><sup>2</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://tylerzhu.com/">Tyler Zhu*</a><sup>1,3</sup>,
+              </span>
+              <br>
+              <span class="author-block">
+                <a href="https://people.eecs.berkeley.edu/~malik/">Jitendra Malik</a><sup>3</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://people.eecs.berkeley.edu/~trevor">Trevor Darrell</a><sup>1</sup>
+              </span>
+              <span class="author-block">
+                <a href="https://karttikeya.github.io/">Karttikeya Mangalam</a><sup>3</sup>,
+              </span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup>Berkeley AI Research, UC Berkeley,</span>
+              <span class="author-block"><sup>2</sup>UCLA</span>
+              <span class="author-block"><sup>3</sup>Princeton University</span>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- PDF Link. -->
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/tbd" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                    </span>
+                    <span>Paper</span>
+                  </a>
+                </span>
+                <!-- Code Link. -->
+                <span class="link-block">
+                  <a href="https://github.com/bair-climate-initiative/min-xT/"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code and Models</span>
+                  </a>
+                </span>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              Modern computer vision pipelines handle large images in one of two sub-optimal ways: down-sampling or
+              cropping.
+              These two methods incur significant losses in the amount of information and context present in an image.
+              There are many downstream applications in which global context matters as much as high frequency details,
+              such as in real-world satellite imagery; in such cases researchers have to make the uncomfortable choice
+              of which information to discard.
+              We introduce \(x\)T, a simple framework for vision transformers which effectively
+              aggregates global context with local details and can model large images end-to-end on contemporary GPUs.
+              We select a set of benchmark datasets across classic vision tasks which accurately reflect a vision
+              model's ability to understand truly large images and incorporate fine details over large scales and assess
+              our method's improvement on them.
+              By introducing a nested tokenization scheme for large images in conjunction with long-sequence length
+              models normally used for natural language processing, we are able to increase accuracy by up to 8.6% on
+              challenging classification tasks and \(F_1\) score by 11.6 on context-dependent segmentation in large
+              images.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!--/ Abstract. -->
+
+    </div>
+  </section>
+
+
+  <section class="section">
+    <div class="container is-max-desktop">
+
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <h3>Images are Getting Bigger</h2>
+            <img src="./static/images/football.png">
+            <div class="content has-text-justified">
+              <p>
+                Images have been getting increasingly larger over the past decade. For example, consider a video feed of
+                a
+                football game which is captured natively in 8K resolution. We would like to understand where the player
+                in
+                the middle of the screen is passing the ball to. However, today's leading models would not be able to
+                reason over the entire image in one pass.
+              </p>
+              <p>
+                Modern computer vision pipelines are limited by the memory in the systems they are trained upon,
+                resulting
+                in the creation of models that only operate on small images. Computer vision practitioners limit the
+                size
+                of images in two less-than-ideal ways: down-sampling or cropping. While these simple operations produce
+                powerful models when measured against typical computer vision benchmarks, the loss of high frequency
+                information or global context is limited for many real-world tasks.
+              </p>
+            </div>
+        </div>
+      </div>
+  </section>
+
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3">Using \(x\)T to Model Large Images</h2>
+      <div class="columns is-centered is-full-width">
+        <div class="column">
+          <img src="./static/images/xt.png">
+          <h3 class="has-text-centered">Figure 1: Architecture for the \(x\)T framework.</h2>
+        </div>
+      </div>
+      <div class="content has-text-justified">
+        <p>
+          \(x\)T is framework that allows existing vision backbones to process large images in a memory efficient and
+          contextual manner.
+          We achieve this through an iterative, two-stage design.
+        </p>
+        <p>
+          First, images are tokenized hierarchically (Nested Tokenization) before being independently
+          featurized by a region encoder with a limited context window (Independent Region Encoding).
+          Then, a lightweight context encoder incorporates context globally across this sequence of features
+          (Context-Aware Encoding), which then gets passed to the task-specific decoders.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3">Results</h2>
+      <div class="columns is-centered is-full-width">
+        <div class="column">
+          <img src="./static/images/model_performance_plot_mamba.png">
+          <h3 class="has-text-centered">Figure 2: Powerful vision models used with \(x\)T set a new frontier on
+            downstream tasks.
+          </h3>
+        </div>
+        <p>
+          The use of \(x\)T allows myopic, memory-hungry vision backbones to effectively "see" across the entire large
+          image at once. On tasks such as classification (iNaturalist-Reptilia shown in the figure), \(x\)T can achieve
+          higher accuracy with fewer parameters due to its ability to incorporate global context across local regions of
+          the image.
+        </p>
+      </div>
+      <div class="columns is-centered is-full-width">
+        <div class="column">
+          <img src="./static/images/ERF.png">
+          <h3 class="has-text-centered">Figure 3: \(x\)T increases the receptive field of vision backbones.
+          </h3>
+        </div>
+        <p>
+          This is best visualized through Figure 3, which demonstrates the effective receptive field of Swin-B and
+          Swin-B &lt;\(x\)T&gt; XL as the input image gets larger. Swin-B cannot model an image that is &gt;2,800 x
+          2,800
+          pixels large, while it can modeled with \(x\)T properly.
+        </p>
+      </div>
+      <div class="columns is-centered is-full-width">
+        <div class="column">
+          <img src="./static/images/mem.png">
+          <h3 class="has-text-centered">Figure 4: \(x\)T increases the receptive field of vision backbones.
+          </h3>
+        </div>
+        <p>
+          As inputs get larger, backbones such as Swin scale memory usage quadratically, whereas \(x\)T memory usage
+          stays near-constant per region.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>@article{xTLargeImageModeling,
+  title={xT: Nested Tokenization for Larger Context in Large Images},
+  author={Gupta, Ritwik and Li, Shufan and Zhu, Tyler and Malik, Jitendra and Darrell, Trevor and Mangalam, Karttikeya},
+  journal={arXiv preprint arXiv:tbd},
+  year={2024}
+}</code></pre>
+    </div>
+  </section>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="content has-text-centered">
+        <a class="icon-link" href="https://arxiv.org/abs/tbd">
+          <i class="fas fa-file-pdf"></i>
+        </a>
+        <a class="icon-link" href="https://github.com/bair-climate-initiative/min-xT/" class="external-link" disabled>
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              This website is licensed under a <a rel="license"
+                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+                Commons Attribution-ShareAlike 4.0 International License</a>.
+            </p>
+            <p>
+              This website came from the <a href="https://github.com/nerfies/nerfies.github.io">Nerfies project
+                website
+                template</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>
