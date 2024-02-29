@@ -192,37 +192,39 @@
             downstream tasks.
           </h3>
         </div>
-        <p>
-          The use of \(x\)T allows myopic, memory-hungry vision backbones to effectively "see" across the entire large
-          image at once. On tasks such as classification (iNaturalist-Reptilia shown in the figure), \(x\)T can achieve
-          higher accuracy with fewer parameters due to its ability to incorporate global context across local regions of
-          the image.
-        </p>
       </div>
+      <p>
+        The use of \(x\)T allows myopic, memory-hungry vision backbones to effectively "see" across the entire large
+        image at once. On tasks such as classification (iNaturalist-Reptilia shown in the figure), \(x\)T can achieve
+        higher accuracy with fewer parameters due to its ability to incorporate global context across local regions of
+        the image.
+      </p>
       <div class="columns is-centered is-full-width">
         <div class="column">
           <img src="./static/images/ERF.png">
           <h3 class="has-text-centered">Figure 3: \(x\)T increases the receptive field of vision backbones.
           </h3>
         </div>
-        <p>
-          This is best visualized through Figure 3, which demonstrates the effective receptive field of Swin-B and
-          Swin-B &lt;\(x\)T&gt; XL as the input image gets larger. Swin-B cannot model an image that is &gt;2,800 x
-          2,800
-          pixels large, while it can modeled with \(x\)T properly.
-        </p>
       </div>
+      <p>
+        This is best visualized through Figure 3, which demonstrates the effective receptive field of Swin-B and
+        Swin-B &lt;\(x\)T&gt; XL as the input image gets larger. Swin-B cannot model an image that is &gt;2,800 x
+        2,800
+        pixels large, while it can modeled with \(x\)T properly.
+      </p>
       <div class="columns is-centered is-full-width">
         <div class="column">
           <img src="./static/images/mem.png">
           <h3 class="has-text-centered">Figure 4: \(x\)T increases the receptive field of vision backbones.
           </h3>
         </div>
-        <p>
-          As inputs get larger, backbones such as Swin scale memory usage quadratically, whereas \(x\)T memory usage
-          stays near-constant per region.
-        </p>
       </div>
+      <p>
+        Critically, as inputs get larger, backbones such as Swin scale memory usage quadratically, whereas \(x\)T memory
+        usage stays near-constant per region. This enables entirely new classes of applications not possible before,
+        such as the effective processing of images captured from large-format sensors such as satellites and
+        microscopes.
+      </p>
     </div>
   </section>
 
