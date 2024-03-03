@@ -92,6 +92,21 @@
     </div>
   </section>
 
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <video id="teaser" autoplay="" muted="" loop="" playsinline="" height="100%">
+          <source src="./static/videos/xT-Teaser.webm" type="video/webm">
+        </video>
+        <h2 class="subtitle has-text-centered">
+          <span class="dnerf">Nerfies</span> turns selfie videos from your phone into
+          free-viewpoint
+          portraits.
+        </h2>
+      </div>
+    </div>
+  </section>
+
 
   <section class="section">
     <div class="container is-max-desktop">
@@ -100,7 +115,7 @@
         <div class="column is-four-fifths">
           <h2 class="title is-3">Abstract</h2>
           <div class="content has-text-justified">
-            <p>
+            <p class="sans-serif">
               Modern computer vision pipelines handle large images in one of two sub-optimal ways: down-sampling or
               cropping.
               These two methods incur significant losses in the amount of information and context present in an image.
@@ -131,27 +146,27 @@
 
       <div class="columns is-centered">
         <div class="column is-full-width">
-          <h3>Images are Getting Bigger</h2>
-            <img src="./static/images/football.png">
-            <div class="content has-text-justified">
-              <p>
-                Images have been getting increasingly larger over the past decade. For example, consider a video feed of
-                a
-                football game which is captured natively in 8K resolution. We would like to understand where the player
-                in
-                the middle of the screen is passing the ball to. However, today's leading models would not be able to
-                reason over the entire image in one pass.
-              </p>
-              <p>
-                Modern computer vision pipelines are limited by the memory in the systems they are trained upon,
-                resulting
-                in the creation of models that only operate on small images. Computer vision practitioners limit the
-                size
-                of images in two less-than-ideal ways: down-sampling or cropping. While these simple operations produce
-                powerful models when measured against typical computer vision benchmarks, the loss of high frequency
-                information or global context is limited for many real-world tasks.
-              </p>
-            </div>
+          <h2 class="title is-3">Images are Getting Bigger</h2>
+          <img src="./static/images/football.png">
+          <div class="content has-text-justified">
+            <p>
+              Images have been getting increasingly larger over the past decade. For example, consider a video feed of
+              a
+              football game which is captured natively in 8K resolution. We would like to understand where the player
+              in
+              the middle of the screen is passing the ball to. However, today's leading models would not be able to
+              reason over the entire image in one pass.
+            </p>
+            <p>
+              Modern computer vision pipelines are limited by the memory in the systems they are trained upon,
+              resulting
+              in the creation of models that only operate on small images. Computer vision practitioners limit the
+              size
+              of images in two less-than-ideal ways: down-sampling or cropping. While these simple operations produce
+              powerful models when measured against typical computer vision benchmarks, the loss of high frequency
+              information or global context is limited for many real-world tasks.
+            </p>
+          </div>
         </div>
       </div>
   </section>
@@ -193,12 +208,14 @@
           </h3>
         </div>
       </div>
-      <p>
-        The use of \(x\)T allows myopic, memory-hungry vision backbones to effectively "see" across the entire large
-        image at once. On tasks such as classification (iNaturalist-Reptilia shown in the figure), \(x\)T can achieve
-        higher accuracy with fewer parameters due to its ability to incorporate global context across local regions of
-        the image.
-      </p>
+      <div class="content has-text-justified">
+        <p>
+          The use of \(x\)T allows myopic, memory-hungry vision backbones to effectively "see" across the entire large
+          image at once. On tasks such as classification (iNaturalist-Reptilia shown in the figure), \(x\)T can achieve
+          higher accuracy with fewer parameters due to its ability to incorporate global context across local regions of
+          the image.
+        </p>
+      </div>
       <div class="columns is-centered is-full-width">
         <div class="column">
           <img src="./static/images/ERF.png">
@@ -206,12 +223,14 @@
           </h3>
         </div>
       </div>
-      <p>
-        This is best visualized through Figure 3, which demonstrates the effective receptive field of Swin-B and
-        Swin-B &lt;\(x\)T&gt; XL as the input image gets larger. Swin-B cannot model an image that is &gt;2,800 x
-        2,800
-        pixels large, while it can modeled with \(x\)T properly.
-      </p>
+      <div class="content has-text-justified">
+        <p>
+          This is best visualized through Figure 3, which demonstrates the effective receptive field of Swin-B and
+          Swin-B &lt;\(x\)T&gt; XL as the input image gets larger. Swin-B cannot model an image that is &gt;2,800 x
+          2,800
+          pixels large, while it can modeled with \(x\)T properly.
+        </p>
+      </div>
       <div class="columns is-centered is-full-width">
         <div class="column">
           <img src="./static/images/mem.png">
@@ -219,12 +238,15 @@
           </h3>
         </div>
       </div>
-      <p>
-        Critically, as inputs get larger, backbones such as Swin scale memory usage quadratically, whereas \(x\)T memory
-        usage stays near-constant per region. This enables entirely new classes of applications not possible before,
-        such as the effective processing of images captured from large-format sensors such as satellites and
-        microscopes.
-      </p>
+      <div class="content has-text-justified">
+        <p>
+          Critically, as inputs get larger, backbones such as Swin scale memory usage quadratically, whereas \(x\)T
+          memory
+          usage stays near-constant per region. This enables entirely new classes of applications not possible before,
+          such as the effective processing of images captured from large-format sensors such as satellites and
+          microscopes.
+        </p>
+      </div>
     </div>
   </section>
 

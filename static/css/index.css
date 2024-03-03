@@ -1,5 +1,6 @@
 body {
-  font-family: 'Noto Sans', sans-serif;
+  font-family: 'Charter', 'Georgia', sans-serif;
+  font-size: 1.04vw;
 }
 
 
@@ -51,11 +52,12 @@ body {
 }
 
 .publication-title {
-    font-family: 'Google Sans', sans-serif;
+    font-family: "Gelasio", Georgia, serif;
+    font-weight: normal;
 }
 
 .publication-authors {
-    font-family: 'Google Sans', sans-serif;
+    font-family: "Gelasio", Georgia, serif;
 }
 
 .publication-venue {
@@ -157,4 +159,12 @@ body {
 }
 #interpolation-image-wrapper img {
   border-radius: 5px;
+}
+
+.sans-serif {
+  font-family: 'Noto Sans', sans-serif;
+}
+
+.container {
+  width: 45%;
 }
