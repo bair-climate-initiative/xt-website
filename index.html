@@ -112,7 +112,7 @@
   <section class="hero teaser">
     <div class="container is-max-desktop">
       <div class="hero-body">
-        <video id="teaser" autoplay="" muted="" loop="" playsinline="" height="100%">
+        <video id="teaser" autoplay muted loop playsinline>
           <source src="./static/videos/xT-Teaser.webm" type="video/webm">
         </video>
       </div>
@@ -331,7 +331,7 @@
         function updateContainerWidth() {
             const windowWidth = window.innerWidth;
             
-            const newContainerWidth = windowWidth < 1000 ? '90%' : '65%';
+            const newContainerWidth = windowWidth < 800 ? '90%' : '65%';
             
             document.documentElement.style.setProperty('--container-width', newContainerWidth);
        }
