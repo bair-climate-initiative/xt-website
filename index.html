@@ -42,42 +42,6 @@
   <meta name="twitter:image" content="https://ai-climate.berkeley.edu/xt-website/static/images/xt.png">
 
 
-    <script>
-        function updateContainerWidth() {
-        var container = document.querySelector('.container');
-        
-        if (container) {
-            // Check if the window width is less than 700 pixels
-            console.log("here");
-            if (window.innerWidth < 700) {
-            console.log("small inner width");
-            // Set a different width for smaller screens
-            container.style.width = '90%'; // Adjust the width as needed
-            // container.style.width = (window.innerWidth * 0.90) + 'px'; // Adjust the width as needed
-            } else {
-            // Set the default width for larger screens
-            container.style.width = (window.innerWidth * 0.65) + 'px'; // Adjust the multiplier as needed
-            }
-        }
-        }
-
-        // Listen for the resize event on the window
-        window.addEventListener('resize', updateContainerWidth);
-
-        // Initial setup when the page loads
-        document.addEventListener('DOMContentLoaded', updateContainerWidth);
-
-        // Initial setup when the page loads
-        document.addEventListener('DOMContentLoaded', function() {
-        var teaserVideo = document.getElementById('teaser');
-
-        // Check if the video element exists
-        if (teaserVideo) {
-            // Set the playbackRate to 1.25 to make it play 25% faster
-            teaserVideo.playbackRate = 1.25;
-        }
-        });
-    </script>
 </head>
 
 <body>
@@ -360,5 +324,36 @@
   </footer>
 
 </body>
+
+    <script>
+        const container = document.querySelector('.container');
+
+        function updateContainerWidth() {
+            const windowWidth = window.innerWidth;
+            
+            const newContainerWidth = windowWidth < 1000 ? '90%' : '65%';
+            
+            document.documentElement.style.setProperty('--container-width', newContainerWidth);
+       }
+
+       updateContainerWidth();
+
+        // Listen for the resize event on the window
+        window.addEventListener('resize', updateContainerWidth);
+
+        // // Initial setup when the page loads
+        // document.addEventListener('DOMContentLoaded', updateContainerWidth);
+
+        // Initial setup when the page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            var teaserVideo = document.getElementById('teaser');
+
+            // Check if the video element exists
+            if (teaserVideo) {
+                // Set the playbackRate to 1.25 to make it play 25% faster
+                teaserVideo.playbackRate = 1.25;
+            }
+        });
+    </script>
 
 </html>

@@ -137,7 +137,10 @@ body {
   font-family: 'Noto Sans', sans-serif;
 }
 
+:root {
+    --container-width: 65%;
+}
+
 .container {
-  width: 65%;
-  /* width: 90%; */
+  width: var(--container-width);
 }
