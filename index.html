@@ -24,7 +24,7 @@
   <script defer src="./static/js/fontawesome.all.min.js"></script>
   <script src="./static/js/bulma-carousel.min.js"></script>
   <script src="./static/js/bulma-slider.min.js"></script>
-  <script src="./static/js/index.js"></script>
+  <!-- <script src="./static/js/index.js"></script> -->
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
@@ -40,6 +40,44 @@
   <meta name="twitter:title" content="xT: Nested Tokenization for Larger Context in Large Images">
   <meta name="twitter:description" content="xT enables powerful, yet myopic vision backbones to model extremely large images on contemporary GPUs.">
   <meta name="twitter:image" content="https://ai-climate.berkeley.edu/xt-website/static/images/xt.png">
+
+
+    <script>
+        function updateContainerWidth() {
+        var container = document.querySelector('.container');
+        
+        if (container) {
+            // Check if the window width is less than 700 pixels
+            console.log("here");
+            if (window.innerWidth < 700) {
+            console.log("small inner width");
+            // Set a different width for smaller screens
+            container.style.width = '90%'; // Adjust the width as needed
+            // container.style.width = (window.innerWidth * 0.90) + 'px'; // Adjust the width as needed
+            } else {
+            // Set the default width for larger screens
+            container.style.width = (window.innerWidth * 0.65) + 'px'; // Adjust the multiplier as needed
+            }
+        }
+        }
+
+        // Listen for the resize event on the window
+        window.addEventListener('resize', updateContainerWidth);
+
+        // Initial setup when the page loads
+        document.addEventListener('DOMContentLoaded', updateContainerWidth);
+
+        // Initial setup when the page loads
+        document.addEventListener('DOMContentLoaded', function() {
+        var teaserVideo = document.getElementById('teaser');
+
+        // Check if the video element exists
+        if (teaserVideo) {
+            // Set the playbackRate to 1.25 to make it play 25% faster
+            teaserVideo.playbackRate = 1.25;
+        }
+        });
+    </script>
 </head>
 
 <body>
@@ -52,28 +90,28 @@
             <h1 class="title is-1 publication-title">\(x\)T</h1>
             <h2 class="title is-2 publication-title">Nested Tokenization for Larger Context in Large Images</h2>
             <div class="is-size-5 publication-authors">
-              <a href="https://ritwikgupta.me">Ritwik Gupta*</a><sup>1</sup>,</span>
+              <a href="https://ritwikgupta.me">Ritwik Gupta</a>*<sup>1</sup>,</span>
               <span class="author-block">
-                <a href="https://homepage.jackli.org/">Shufan Li*</a><sup>2</sup>,
+                <a href="https://homepage.jackli.org/">Shufan Li</a>*<sup>2</sup>,
               </span>
               <span class="author-block">
-                <a href="https://tylerzhu.com/research/">Tyler Zhu*</a><sup>1,3</sup>,
+                <a href="https://tylerzhu.com/research/">Tyler Zhu</a>*<sup>1,3</sup>,
               </span>
               <br>
               <span class="author-block">
                 <a href="https://people.eecs.berkeley.edu/~malik/">Jitendra Malik</a><sup>3</sup>,
               </span>
               <span class="author-block">
-                <a href="https://people.eecs.berkeley.edu/~trevor">Trevor Darrell</a><sup>1</sup>
+                <a href="https://people.eecs.berkeley.edu/~trevor">Trevor Darrell</a><sup>1</sup>,
               </span>
               <span class="author-block">
-                <a href="https://karttikeya.github.io/">Karttikeya Mangalam</a><sup>3</sup>,
+                <a href="https://karttikeya.github.io/">Karttikeya Mangalam</a><sup>3</sup>
               </span>
             </div>
 
             <div class="is-size-5 publication-authors">
               <span class="author-block"><sup>1</sup>Berkeley AI Research, UC Berkeley,</span>
-              <span class="author-block"><sup>2</sup>UCLA</span>
+              <span class="author-block"><sup>2</sup>UCLA</span>,
               <span class="author-block"><sup>3</sup>Princeton University</span>
             </div>
 
@@ -124,8 +162,9 @@
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
           <h2 class="title is-3">Abstract</h2>
-          <div class="content has-text-justified">
-            <p class="sans-serif">
+          <!-- <div class="content has-text-justified"> -->
+          <div class="content sans-serif has-text-justified is-6">
+            <p>
               Modern computer vision pipelines handle large images in one of two sub-optimal ways: down-sampling or
               cropping.
               These two methods incur significant losses in the amount of information and context present in an image.
@@ -157,8 +196,15 @@
       <div class="columns is-centered">
         <div class="column is-full-width">
           <h2 class="title is-3">Images are Getting Bigger</h2>
-          <img src="./static/images/football.png">
-          <div class="content has-text-justified">
+          <div class="column has-text-centered">
+            <img src="./static/images/football.png"
+            width="100%"
+            center
+            alt="A photo of a football field."/>
+         </div>
+          <!-- <img src="./static/images/football.png"> -->
+        <div class="content has-text-justified">
+          <!-- <h3 class="subtitle sans-serif has-text-justified is-6"> -->
             <p>
               Images have been getting increasingly larger over the past decade. For example, consider a video feed of
               a
@@ -167,6 +213,10 @@
               the middle of the screen is passing the ball to. However, today's leading models would not be able to
               reason over the entire image in one pass.
             </p>
+          <!-- </h3> -->
+            <!-- <p></p> -->
+
+          <!-- <h3 class="subtitle sans-serif has-text-justified is-6"> -->
             <p>
               Modern computer vision pipelines are limited by the memory in the systems they are trained upon,
               resulting
@@ -176,7 +226,7 @@
               powerful models when measured against typical computer vision benchmarks, the loss of high frequency
               information or global context is limited for many real-world tasks.
             </p>
-          </div>
+          <!-- </h3> -->
         </div>
       </div>
   </section>
@@ -211,12 +261,15 @@
     <div class="container is-max-desktop">
       <h2 class="title is-3">Results</h2>
       <div class="columns is-centered is-full-width">
-        <div class="column">
-          <img src="./static/images/model_performance_plot_mamba.png">
+        <div class="column has-text-centered">
+            <img src="./static/images/model_performance_plot_mamba.png"
+            width="80%"
+            center
+            alt="xT sets a new frontier on downstream tasks."/>
           <h3 class="has-text-centered">Figure 2: Powerful vision models used with \(x\)T set a new frontier on
             downstream tasks.
           </h3>
-        </div>
+         </div>
       </div>
       <div class="content has-text-justified">
         <p>
@@ -227,11 +280,12 @@
         </p>
       </div>
       <div class="columns is-centered is-full-width">
-        <div class="column">
-          <img src="./static/images/ERF.png">
-          <h3 class="has-text-centered">Figure 3: \(x\)T increases the receptive field of vision backbones.
-          </h3>
-        </div>
+        <div class="column has-text-centered">
+          <img src="./static/images/ERF.png"
+            width="70%"
+            center/>
+          <h3 class="has-text-centered">Figure 3: \(x\)T increases the receptive field of vision backbones.</h3>
+         </div>
       </div>
       <div class="content has-text-justified">
         <p>
@@ -241,13 +295,16 @@
           pixels large, while it can modeled with \(x\)T properly.
         </p>
       </div>
+
       <div class="columns is-centered is-full-width">
-        <div class="column">
-          <img src="./static/images/mem.png">
-          <h3 class="has-text-centered">Figure 4: \(x\)T increases the receptive field of vision backbones.
-          </h3>
-        </div>
+        <div class="column has-text-centered">
+          <img src="./static/images/mem.png"
+            width="70%"
+            center/>
+          <h3 class="has-text-centered">Figure 4: \(x\)T increases the receptive field of vision backbones.</h3>
+         </div>
       </div>
+
       <div class="content has-text-justified">
         <p>
           Critically, as inputs get larger, backbones such as Swin scale memory usage quadratically, whereas \(x\)T
